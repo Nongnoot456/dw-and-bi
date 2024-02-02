@@ -53,7 +53,6 @@ table_create_org = """
     )
 """
 
-
 create_table_queries = [
     table_create_events,
     table_create_actors,
@@ -62,10 +61,10 @@ create_table_queries = [
     
 ]
 drop_table_queries = [
-    table_create_events,
-    table_create_actors,
-    table_create_repo,
-    table_create_org,
+    table_drop_events,
+    table_drop_actors,
+    table_drop_repo,
+    table_drop_org,
     
 ]
 
