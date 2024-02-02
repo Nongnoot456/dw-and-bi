@@ -55,16 +55,18 @@ table_create_org = """
 
 
 create_table_queries = [
+    table_create_events,
     table_create_actors,
     table_create_repo,
     table_create_org,
-    table_create_events,
+    
 ]
 drop_table_queries = [
+    table_create_events,
     table_create_actors,
     table_create_repo,
     table_create_org,
-    table_create_events,
+    
 ]
 
 def drop_tables(cur: PostgresCursor, conn: PostgresConn) -> None:
