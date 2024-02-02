@@ -13,7 +13,7 @@ table_drop_org = "DROP TABLE IF EXISTS org"
 
 table_create_events = """
     CREATE TABLE IF NOT EXISTS events (
-        id text NOT NULL,
+        id text NOT NULL ,
         type text,
         actor_id int,
         PRIMARY KEY(id),
@@ -23,7 +23,7 @@ table_create_events = """
 
 table_create_actors = """
     CREATE TABLE IF NOT EXISTS actors (
-        actor_id int NOT NULL,
+        actor_id int ,
         actor_login vachar(50),
         display_login vachar(50),
         actor_gravatar_id vachar(50),
