@@ -13,8 +13,6 @@ table_create_actors = """
     CREATE TABLE IF NOT EXISTS actors (
         id int,
         login text,
-        Firstname text,
-        Lastname text,
         PRIMARY KEY(id)
     )
 """
@@ -23,7 +21,6 @@ table_create_events = """
         id text,
         type text,
         actor_id int,
-        Movie
         PRIMARY KEY(id),
         CONSTRAINT fk_actor FOREIGN KEY(actor_id) REFERENCES actors(id)
     )
