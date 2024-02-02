@@ -8,7 +8,6 @@ PostgresConn = NewType("PostgresConn", psycopg2.extensions.connection)
 
 table_drop_actors = "DROP TABLE IF EXISTS actors"
 table_drop_repo = "DROP TABLE IF EXISTS repo"
-table_drop_payload = "DROP TABLE IF EXISTS payload"
 table_drop_org = "DROP TABLE IF EXISTS org"
 table_drop_events = "DROP TABLE IF EXISTS events"
 
@@ -31,18 +30,7 @@ table_create_repo = """
         PRIMARY KEY(repo_id)
     )
 """
-table_create_payload = """
-    CREATE TABLE IF NOT EXISTS payload (
-        push_id BIGINT,
-        size int,
-        distinct_size int,
-        ref varchar(100),
-        head varchar(100),
-        before_code varchar(100),
-        commits varchar(255),
-        PRIMARY KEY(push_id)
-    )
-"""
+
 table_create_org = """
     CREATE TABLE IF NOT EXISTS org (
         org_id int,
@@ -74,11 +62,9 @@ table_create_events = """
 """
 
 
-
 create_table_queries = [
     table_create_actors,
     table_create_repo,
-    table_create_payload,
     table_create_org,
     table_create_events,
 
@@ -86,7 +72,6 @@ create_table_queries = [
 drop_table_queries = [
     table_drop_actors,
     table_drop_repo,
-    table_drop_payload,
     table_drop_org,
     table_drop_events,
 ]
