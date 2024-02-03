@@ -6,12 +6,13 @@ import psycopg2
 PostgresCursor = NewType("PostgresCursor", psycopg2.extensions.cursor)
 PostgresConn = NewType("PostgresConn", psycopg2.extensions.connection)
 
-table_drop_actors = "DROP TABLE IF EXISTS actors"
-table_drop_repo = "DROP TABLE IF EXISTS repo"
-table_drop_payload = "DROP TABLE IF EXISTS payload"
-table_drop_org = "DROP TABLE IF EXISTS org"
+table_drop_actors = "DROP TABLE IF EXISTS actors CASCADE"
+table_drop_repo = "DROP TABLE IF EXISTS repo CASCADE"
+table_drop_payload = "DROP TABLE IF EXISTS payload CASCADE"
+table_drop_org = "DROP TABLE IF EXISTS org CASCADE"
 table_drop_events = "DROP TABLE IF EXISTS events"
 
+# Create Tables
 table_create_actors = """
     CREATE TABLE IF NOT EXISTS actors (
         actor_id int,
@@ -19,7 +20,7 @@ table_create_actors = """
         actor_display_login varchar(100),
         actor_gravatar_id varchar(100),
         actor_url varchar(255),
-        actor__avatar_url varchar(255),
+        actor_avatar_url varchar(255),
         PRIMARY KEY(actor_id)
     )
 """
@@ -38,7 +39,7 @@ table_create_payload = """
         distinct_size int,
         ref varchar(100),
         head varchar(100),
-        before_code varchar(100),
+        before varchar(100),
         commits varchar(255),
         PRIMARY KEY(push_id)
     )
@@ -74,7 +75,44 @@ table_create_events = """
 """
 
 
+# Insert data
+actors_insert = ("""
+INSERT INTO actors (actor_id, actor_login, actor_display_login, actor_gravatar_id, actor_url, actor_avatar_url)
+VALUES (%s, %s, %s, %s, %s, %s)
+ON CONFLICT (actor_id)
+DO NOTHING
+""")
 
+repo_insert = ("""
+INSERT INTO repo (repo_id, repo_name, repo_url)
+VALUES (%s, %s, %s)
+ON CONFLICT (repo_id)
+DO NOTHING
+""")
+
+payload_insert = ("""
+INSERT INTO payload (push_id, size, distinct_size, ref, head, before, commits)
+VALUES (%s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT (push_id)
+DO NOTHING
+""")
+
+org_insert = ("""
+INSERT INTO org (org_id, org_login, org_gravatar_id, org_url, org_avatar_url)
+VALUES (%s, %s, %s, %s, %s)
+ON CONFLICT (org_id)
+DO NOTHING
+""")
+
+events_insert = ("""
+INSERT INTO events (event_id, event_type, actor_id, repo_id, payload_action, payload_push_id, public, created_at, org_id, event_time)
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT (event_id)
+DO NOTHING
+""")
+
+
+# Queries
 create_table_queries = [
     table_create_actors,
     table_create_repo,
