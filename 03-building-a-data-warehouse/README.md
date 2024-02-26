@@ -1,39 +1,72 @@
-# Building a Data Warehouse
+# Building a Data Warehouse with BigQuery (GCP)
 
-1.สร้าง Data set ชื่อ github บน bigquery
+## Started
+### Getting Started
+```sh
+python -m venv ENV
+source ENV/bin/activate
+pip install -r requirements.txt
+```
+
+### Running ETL Script
+```sh
+python etl.py
+```
+
+### Set def main(dataset_id, table_id, file_path)
+```sh
+main(dataset_id="github", table_id="events", file_path="github_events.csv")
+```
+
+![def main]()
 
 
+### Set Project ID
+```sh
+project_ID = ""YOUR_GCP_PROJECT""
+```
 
 
+### Set Keyfile Path
+```sh
+keyfile = ""YOUR_KEYFILE_PATH""
+```
+
+### Keyfile Path in GCP
+```sh
+IAM & Admin --> Service Accounts
+Create Service Accounts : 
+    Service accounts details: Service account name
+    Grant account access to project: Role
+    Grant user access to service account: Done
+    Create private key type: JSON
+```
+
+![Keyfile Path]()
 
 
-![Alt text](image-7.png)
-
-1.pip install -r requirements.txt
-![Alt text](image-8.png)
-
-2.สร้าง service account บน bigquery และกำหนดสิทธิ์
-
+### Load data to BigQuery
+```sh
+python etl.py
+```
+![BigQuery]()
 
 
+### Add Actor in etl and show in bigquery
+```sh
+Delete events
+python etl.py
+Create new events
+```
 
-![Alt text](image-1.png)
+![Actor in etl0]()
 
-3.เข้าไป service account แล้วทำการ download key เลือก Key type เป็น JSON
-![Alt text](image-3.png)
+![Actor in etl1]()
 
-![Alt text](image-4.png)
 
-4. นำไฟล์ Key ที่  download มาไว้ที่ Folder 03-building-a-data-warehouse 
+![Actor in BigQuery]()
 
-5.ไปที่ etl_bigquery.py แล้วนำชื่อไฟล์ Key ไปใส่ใน Key parth และใส่ชื่อ project_id ให้ตรงกับบน bigquery
-![Alt text](image-6.png)
 
-6.python etl_bigquery.py
-![Alt text](image-9.png)
+### Query Data
 
-7.ไปที่ bigqury จะพบ table events ที่สร้างขึ้นมา
-![Alt text](image-10.png)
-
-8.ทดลอง query data บน bigquery
-![Alt text](image-11.png)
+![Query Data]()
