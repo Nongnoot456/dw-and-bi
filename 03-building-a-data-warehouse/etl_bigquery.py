@@ -36,7 +36,7 @@ def main(dataset_id, table_id, file_path):
     # keyfile = os.environ.get("KEYFILE_PATH")
     #
     # แต่เพื่อความง่ายเราสามารถกำหนด File Path ไปได้เลยตรง ๆ
-    keyfile = "automated-swu-ds525-load-data-to-bigquer-ray-413911-a4fadb511033.json"
+    keyfile = "../credentials/automated-ray-413911-swu-ds525-load-data-to-bigquery-6d37b9bd036f.json"
     service_account_info = json.load(open(keyfile))
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
 
@@ -82,8 +82,9 @@ if __name__ == "__main__":
         writer.writerow([
             "id", 
             "type",
-            "login"
-            ])
+            "login",
+        ])
+
         for datafile in all_files:
             with open(datafile, "r") as f:
                 data = json.loads(f.read())
@@ -91,7 +92,7 @@ if __name__ == "__main__":
                     writer.writerow([
                         each["id"], 
                         each["type"],
-                        each["actor"]["login"]
-                        ])
+                        each["actor"]["login"],
+                    ])
 
     main(dataset_id="github", table_id="events", file_path="github_events.csv")
