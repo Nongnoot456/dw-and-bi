@@ -1,13 +1,35 @@
 # Building a Data Lake
 
-เพื่อให้เราสามารถสร้างไฟล์ได้จาก Jupyter Lab ให้รันคำสั่งด้านล่างนี้
+## Getting Started
 
+
+### 1. change directory to project 04-building-a-data-lake
 ```sh
-sudo chmod 777 .
+$ cd 04-building-a-data-lake/
 ```
 
-แล้วค่อยรัน
-
+### 2. applying code for saving jupyter lab
 ```sh
-docker-compose up
+$ sudo chmod 777
+```
+
+### 3. prepare environment workspace
+```sh
+$ docker-compose up
+```
+
+### 4. open JupyterLab URL
+<br>
+
+### 5. execute Notebook 'etl_local.ipynb'
+<br>
+
+### 6. check output data in folders
+<br>
+
+## Shutdown steps
+
+### Shutdown environment workspace:
+```sh
+$ docker-compose down
 ```
