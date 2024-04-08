@@ -68,7 +68,7 @@ User & Password : airflow (by default line 241-242)
 
 `Show All DAGs` (After Config code in files .py)
 
-![DAGs](https://github.com/Nongnoot456/dw-and-bi/tree/main/05-data-pipelines1/images)
+![DAGs](https://github.com/Nongnoot456/dw-and-bi/blob/main/05-data-pipelines1/images/DAG.png)
 
 `Show Graph`
 
