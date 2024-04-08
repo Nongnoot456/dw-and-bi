@@ -68,15 +68,15 @@ User & Password : airflow (by default line 241-242)
 
 `Show All DAGs` (After Config code in files .py)
 
-![DAGs](05-data-pipelines1/images/DAG.png)
+![DAGs](https://github.com/Nongnoot456/dw-and-bi/tree/main/05-data-pipelines1/images)
 
 `Show Graph`
 
-![Graph](/workspaces/dw-and-bi/05-data-pipelines1/images/graph.png)
+![Graph](https://github.com/Nongnoot456/dw-and-bi/blob/main/05-data-pipelines1/images/graph.png)
 
 `Show Log details`
 
-![Log](/workspaces/dw-and-bi/05-data-pipelines1/images/say hello.png)
+![Log](https://github.com/Nongnoot456/dw-and-bi/blob/main/05-data-pipelines1/images/say%20hello.png)
 
 Config schedule by `crontab guru` (https://crontab.guru/)
 
